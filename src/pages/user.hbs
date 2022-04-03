@@ -1,0 +1,24 @@
+---
+title: 'Profile user'
+---
+
+{{!< base}}
+<main>
+  <div class='login-form__container'>
+    <div class="login-form__title">Мой профиль</div>
+    <div class="login-form__fields">
+      {{> avatar/avatar}}
+      {{> button/button text='Изменить аватар' id="button__secondary"}}
+      {{> input/input type='text' label="Почта" name="email"}}
+      {{> input/input type='text' label="Логин" name="login"}}
+      {{> input/input type='text' label="Имя" name="first_name"}}
+      {{> input/input type='text' label="Фамилия" name="second_name"}}
+      {{> input/input type='text' label="Телефон" name="phone"}}
+    </div>
+    <div class="login-form__actions">
+      {{> button/button text='Изменить пароль' link="./password.hbs" id="button__secondary"}}
+       {{> button/button text='Сохранить изменения' link="./home.hbs" id="button__primary"}}
+      {{> button/button text='Выйти' link="./index.hbs" id="button__error"}}
+    </div>
+  </div>
+</main>
