@@ -10,8 +10,8 @@
 
 **Мессенджер** для обмена сообщениями между пользователями.
 
-- Ссылка на проект (платформа Netlify): 
-- Прототип в Figma figma: https://www.figma.com/file/TRfjtxP2UQZFDYNeuMrMbU/YAP
+- Ссылка на проект (платформа Netlify): https://sage-platypus-659e6a.netlify.app
+- Прототип в Figma: https://www.figma.com/file/TRfjtxP2UQZFDYNeuMrMbU/YAP
 
 ## Установка
 
