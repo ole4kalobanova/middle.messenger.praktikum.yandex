@@ -4,16 +4,18 @@
 
 Проект находится в стадии разработки
 
+## PRs:
+
 ## Описание
 
 **Мессенджер** для обмена сообщениями между пользователями.
 
-Ссылка на проект (платформа Netlify): 
-Прототип в Figma figma: https://www.figma.com/file/TRfjtxP2UQZFDYNeuMrMbU/YAP
+- Ссылка на проект (платформа Netlify): 
+- Прототип в Figma figma: https://www.figma.com/file/TRfjtxP2UQZFDYNeuMrMbU/YAP
 
 ## Установка
 
 - `npm install` — установка стабильной версии,
 - `npm start` — запуск версии для разработчика,
-- `npm run build:prod` — сборка стабильной версии.
+- `npm run build` — сборка стабильной версии.
 
