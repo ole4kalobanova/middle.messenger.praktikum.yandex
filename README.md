@@ -4,7 +4,6 @@
 
 Проект находится в стадии разработки
 
-## PRs:
 - Sprint 1: https://github.com/ole4kalobanova/middle.messenger.praktikum.yandex/pull/1
 ## Описание
 
