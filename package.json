@@ -1,0 +1,24 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "parcel build src/pages/*.hbs --no-cache --public-url ./",
+    "dev": "parcel src/pages/*.hbs --no-cache",
+    "start": "npm run build && node ./server.js "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@anikin/parcel-transformer-handlebars": "^1.0.9",
+    "@parcel/config-default": "^2.4.0",
+    "express": "^4.17.3",
+    "parcel": "^2.4.0",
+    "postcss": "^8.4.12",
+    "postcss-nested": "^5.0.6"
+  },
+  "dependencies": {
+    "handlebars": "^4.7.7"
+  }
+}

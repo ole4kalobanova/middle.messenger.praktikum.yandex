@@ -1,0 +1,16 @@
+.input {
+  &__label{
+    font-size: small;
+    color: rgba(153, 153, 153, 1);
+    text-align: left;
+    width: 35vh;
+    margin-top:15px;
+  }
+
+  &__field{
+    border: none;
+    border-bottom: 1px solid rgba(72, 143, 251, 1);
+    width: 35vh;
+    margin-top:15px;
+  }
+}

@@ -1,0 +1,10 @@
+.round {
+  width: 7em;
+  height: 7em;
+  border: 2px solid rgba(72, 143, 251, 1);
+  border-radius: 50%;
+  line-height: 7em; 
+  text-align: center; 
+  background: rgba(228, 237, 253, 1);
+  margin-bottom: 15px;
+}

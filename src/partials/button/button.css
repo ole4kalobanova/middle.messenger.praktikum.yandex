@@ -1,0 +1,50 @@
+.button {
+  &__primary{
+    width: 35vh;
+  height: 37px;
+  margin: 15px;
+  text-decoration: none;
+  background-color: rgba(72, 143, 251, 1);
+  box-shadow: none;
+  color: rgba(255, 255, 255, 1);
+  border: none;
+  border-radius: 12px;
+  }
+
+  &__secondary{
+    width: 35vh;
+  height: 37px;
+  text-decoration: none;
+  box-shadow: none;
+  border: none;
+  background-color: rgba(255, 255, 255, 1);
+  color:rgba(72, 143, 251, 1);
+  border-radius: 12px;
+  }
+
+  &__error{
+    width: 35vh;
+  height: 37px;
+  text-decoration: none;
+  box-shadow: none;
+  border: none;
+  background-color: rgba(255, 255, 255, 1);
+  color:red;
+  border-radius: 12px;
+  }
+}
+
+.button__primary:hover {
+  background-color: rgba(255, 255, 255, 1);
+  color: rgba(72, 143, 251, 1);
+  border: solid 1px rgba(72, 143, 251, 1);
+}
+
+.button__secondary:hover {
+  border: solid 1px rgba(72, 143, 251, 1);
+}
+
+.button__error:hover {
+  border: solid 1px red;
+}
+
