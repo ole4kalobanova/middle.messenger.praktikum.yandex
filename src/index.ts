@@ -1,9 +1,13 @@
-import { Button } from './components/Button/button.ts'
 import LoginPage from './pages/Login';
-import { renderDOM } from "./utils/renderDom";
+import { renderDOM } from './utils/renderDOM';
+import Button from './components/Button';
+import Input from './components/Input';
+import { registerComponent } from './utils/registerComponent';
+//import styles from './style.pcss'
 
 document.addEventListener('DOMContentLoaded', () => {
-  //console.log('11111')
+  registerComponent(Button);
+  registerComponent(Input);
   const loginPage = new LoginPage({
     buttonText: 'Тык'
     //{ 
@@ -13,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // } 
     //}
   });
-  console.log('DOMContentLoaded')
   renderDOM('#app', loginPage)
   //render(".app", button);
 

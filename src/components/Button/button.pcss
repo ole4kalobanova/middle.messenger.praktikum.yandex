@@ -1,0 +1,49 @@
+.button {
+  &__primary {
+    width: 35vh;
+    height: 37px;
+    margin: 15px;
+    text-decoration: none;
+    background-color: var(--main-blue);
+    box-shadow: none;
+    color: var(--form-background);
+    border: none;
+    border-radius: 12px;
+  }
+
+  &__secondary {
+    width: 35vh;
+    height: 37px;
+    text-decoration: none;
+    box-shadow: none;
+    border: none;
+    background-color: var(--form-background);
+    color: var(--main-blue);
+    border-radius: 12px;
+  }
+
+  &__error {
+    width: 35vh;
+    height: 37px;
+    text-decoration: none;
+    box-shadow: none;
+    border: none;
+    background-color: var(--form-background);
+    color: var(--error-red);
+    border-radius: 12px;
+  }
+}
+
+.button__primary:hover {
+  background-color: var(--form-background);
+  color: var(--main-blue);
+  border: solid 1px var(--main-blue);
+}
+
+.button__secondary:hover {
+  border: solid 1px var(--main-blue);
+}
+
+.button__error:hover {
+  border: solid 1px var(--error-red);
+}
