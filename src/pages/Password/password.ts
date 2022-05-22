@@ -19,7 +19,7 @@ export class ChangePassword extends Block {
           {{{Input type="password" label="Повторите новый пароль" name="repeatPassword"}}}
         </div>
         <div class="${styles["login-form__actions"]}">
-          {{{Button text="Сохранить" id="button__primary" link="./user.hbs"}}}
+          {{{Button text="Сохранить" id="button__primary" link="./profile"}}}
         </div>
       </div>
     </main>

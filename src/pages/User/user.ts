@@ -23,9 +23,9 @@ export class ChangeUser extends Block {
           {{{Input type="text" label="Телефон" name="phone"}}}
         </div>
         <div class="${styles["login-form__actions"]}">
-          {{{Button text="Изменить пароль" id="button__secondary" link="./password.hbs"}}}
-          {{{Button text="Сохранить изменения" id="button__primary" link="./chats.hbs"}}}
-          {{{Button text="Выйти" id="button__error" link="./index.hbs"}}}
+          {{{Button text="Изменить пароль" id="button__secondary" link="./password"}}}
+          {{{Button text="Сохранить изменения" id="button__primary" link="./chats"}}}
+          {{{Button text="Выйти" id="button__error" link="./"}}}
         </div>
       </div>
     </main>

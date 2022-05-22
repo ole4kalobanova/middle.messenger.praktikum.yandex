@@ -4,8 +4,10 @@ import styles from './input.pcss';
 interface InputProps {
   type: string,
   name: string,
-  label: string
-  //onClick?: () => void
+  label: string,
+  events?: {
+    click: () => void
+  }
 }
 
 export class Input extends Block {
@@ -15,7 +17,10 @@ export class Input extends Block {
       type,
       name,
       label,
-      styles
+      styles,
+      events: {
+        click: () => console.log('111111')
+      }
     });
   }
 

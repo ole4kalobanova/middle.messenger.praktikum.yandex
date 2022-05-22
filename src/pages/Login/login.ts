@@ -4,8 +4,12 @@ import styles from '../../index.pcss';
 //import template from './index.hbs'
 
 export class LoginPage extends Block {
-  constructor(props: { buttonText: string }) {
-    super({ ...props, styles, onClick: () => console.log('click') });
+  // constructor(props: { buttonText: string }) {
+  //   super({ ...props, styles, onClick: () => console.log('click') });
+  // }
+
+  constructor() {
+    super({ styles });
   }
 
   // protected initChildren() {
@@ -13,14 +17,14 @@ export class LoginPage extends Block {
   // }
 
   // Дети жестко определены при создании компонента и не являются props
-  componentDidUpdate(oldProps: any, newProps: any) {
-    if (oldProps.buttonText !== newProps.buttonText) {
-      this.children.button.setProps({
-        text: newProps.buttonText
-      })
-    }
-    return true;
-  }
+  // componentDidUpdate(oldProps: any, newProps: any) {
+  //   if (oldProps.buttonText !== newProps.buttonText) {
+  //     this.children.button.setProps({
+  //       text: newProps.buttonText
+  //     })
+  //   }
+  //   return true;
+  // }
 
   render() {
     //const button = new Button({ text: 'Login page' })
@@ -40,10 +44,10 @@ export class LoginPage extends Block {
           {{{Input type="password" label="Пароль" name="password"}}}
         </div>
         <div class="${styles["login-form__actions"]}">
-          {{{Button text="Войти" id="button__primary" link="./chats.hbs"}}}
-          {{{Button text="Еще не зарегистрированы?" id="button__secondary" link="./registration.hbs"}}}
-          <a href="./404.hbs">404</a>
-          <a href="./500.hbs">500</a>
+          {{{Button text="Войти" id="button__primary" link="./chats"}}}
+          {{{Button text="Еще не зарегистрированы?" id="button__secondary" link="./registration"}}}
+          <a href="./404">404</a>
+          <a href="./500">500</a>
         </div>
       </div>
     </main>

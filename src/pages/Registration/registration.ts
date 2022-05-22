@@ -23,8 +23,8 @@ export class RegistrationPage extends Block {
           {{{Input type="password" label="Пароль еще раз" name="repeatPassword"}}}
         </div>
         <div class="${styles["login-form__actions"]}">
-          {{{Button text="Создать аккаунт" id="button__primary" link="./chats.hbs"}}}
-          {{{Button text="Войти" id="button__secondary" link="./index.hbs"}}}
+          {{{Button text="Создать аккаунт" id="button__primary" link="./chats"}}}
+          {{{Button text="Войти" id="button__secondary" link="./"}}}
         </div>
       </div>
     </main>
