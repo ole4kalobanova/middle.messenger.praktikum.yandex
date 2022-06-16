@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "parcel build src/pages/*.hbs --no-cache --public-url ./",
+    "build": "parcel build src/index.html --no-cache --public-url ./",
     "dev": "parcel src/index.html --no-cache",
     "start": "npm run build && node ./server.js "
   },
