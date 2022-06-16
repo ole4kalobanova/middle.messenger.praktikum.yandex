@@ -1,4 +1,4 @@
-import { Block } from '../../utils/Block';
+import Block from '../../utils/Block';
 import styles from './avatar.pcss';
 
 export class Avatar extends Block {

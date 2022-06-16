@@ -12,9 +12,9 @@ export default class EventBus {
   }
 
   public off(event: string, callback: Handler): void {
-    // if (!this.listeners[event]) {
-    //   throw new Error(`Нет события: ${event}`);
-    // }
+    if (!this.listeners[event]) {
+      throw new Error(`Нет события: ${event}`);
+    }
 
     this.listeners[event] = this.listeners[event].filter(
       listener => listener !== callback
@@ -24,7 +24,6 @@ export default class EventBus {
   public emit(event: string, ...args: unknown[]): void {
     if (!this.listeners[event]) {
       return;
-      //throw new Error(`Нет события: ${event}`);
     }
 
     this.listeners[event].forEach(function (listener) {

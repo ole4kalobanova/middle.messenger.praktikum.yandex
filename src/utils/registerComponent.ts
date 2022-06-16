@@ -1,24 +1,43 @@
-import {Block} from './Block';
-//import Handlebars, { HelperOptions } from 'handlebars';
-import { HelperOptions } from 'handlebars';
-// @ts-ignore
-// import Handlebars from 'handlebars/dist/handlebars.runtime';
-import Handlebars from 'handlebars';
+import Block from './Block';
+import Handlebars, { HelperOptions } from 'handlebars';
 
-export function registerComponent(Component: typeof Block) {
-  Handlebars.registerHelper(Component.name, ({ hash: {  ...hash }, data }: HelperOptions) => {
+interface BlockConstructable<Props = any> {
+  new(props: Props): Block;
+}
+
+export default function registerComponent<Props extends any>(Component: BlockConstructable<Props>) {
+  Handlebars.registerHelper(Component.name, function (this: Props, { hash: { ref, ...hash }, data, fn }: HelperOptions) {
     if (!data.root.children) {
       data.root.children = {};
     }
-    // if (!data.root.refs) {
-    //   data.root.refs = {};
-    // }
-    const { children } = data.root;
+
+    if (!data.root.refs) {
+      data.root.refs = {};
+    }
+
+    const { children, refs } = data.root;
+
+    /**
+     * Костыль для того, чтобы передавать переменные
+     * внутрь блоков вручную подменяя значение
+     */
+    (Object.keys(hash) as any).forEach((key: keyof Props) => {
+      if (this[key] && typeof this[key] === 'string') {
+        hash[key] = hash[key].replace(new RegExp(`{{${key}}}`, 'i'), this[key]);
+      }
+    });
+
     const component = new Component(hash);
+
     children[component.id] = component;
-    // if (ref) {
-    //   refs[ref] = component.getContent();
-    // }
-    return `<div data-id="id-${component.id}"></div>`;
+
+    if (ref) {
+      // refs[ref] = component.getContent();
+      refs[ref] = component;
+    }
+
+    const contents = fn ? fn(this) : '';
+
+    return `<div data-id="${component.id}">${contents}</div>`;
   })
 }

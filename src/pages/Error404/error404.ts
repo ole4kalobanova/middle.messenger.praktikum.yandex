@@ -1,9 +1,11 @@
-import { Block } from '../../utils/Block';
+import Block from '../../utils/Block';
 import styles from '../../index.pcss';
 
+interface Error404Props { };
 export class Error404 extends Block {
-  constructor() {
+  constructor(props: Error404Props) {
     super({
+      ...props,
       styles
     });
   }

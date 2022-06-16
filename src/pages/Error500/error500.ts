@@ -1,9 +1,11 @@
-import { Block } from '../../utils/Block';
+import Block from '../../utils/Block';
 import styles from '../../index.pcss';
 
+interface Error500Props { };
 export class Error500 extends Block {
-  constructor() {
+  constructor(props: Error500Props) {
     super({
+      ...props,
       styles
     });
   }

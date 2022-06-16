@@ -1,56 +1,73 @@
-//import Button from '../../components/Button';
-import { Block } from '../../utils/Block';
+import Block from 'utils/Block';
+import { validateValue } from 'utils/validation';
 import styles from '../../index.pcss';
-//import template from './index.hbs'
 
+interface LoginPageProps { };
 export class LoginPage extends Block {
-  // constructor(props: { buttonText: string }) {
-  //   super({ ...props, styles, onClick: () => console.log('click') });
-  // }
-
-  constructor() {
-    super({ styles });
+  constructor(props: LoginPageProps) {
+    super({
+      ...props,
+      styles,
+      events: {
+        submit: (e: Event) => {
+          e.preventDefault();
+          const onlyInputs = document.querySelectorAll("form input");
+          const arrayInputs = Array.from(onlyInputs);
+          // Выводим все значения формы на консоль
+          let allFormInputsData: Record<string, string> = {};
+          arrayInputs.forEach(e => {
+            const { name, value } = e as HTMLInputElement;
+            allFormInputsData[name] = value;
+          })
+          console.log(allFormInputsData, 'allFormInputsData');
+          // Проверяем валидность значений
+          const inputsData = arrayInputs.map(e => this.validationRequiredField(e as HTMLInputElement)).some(e => e);
+          console.log(inputsData, 'inputsData')
+          if (!inputsData) { // Если ошибка - то прерываем переход на страницу
+            window.location.href = 'chats'
+          }
+        }
+      }
+    });
   }
 
-  // protected initChildren() {
-  //   //this.children.button = new Button({ text: this.props.buttonText, events: { click: () => console.log(11111) } })
-  // }
-
-  // Дети жестко определены при создании компонента и не являются props
-  // componentDidUpdate(oldProps: any, newProps: any) {
-  //   if (oldProps.buttonText !== newProps.buttonText) {
-  //     this.children.button.setProps({
-  //       text: newProps.buttonText
-  //     })
-  //   }
-  //   return true;
-  // }
+  // Как вынести данную функцию в validation.ts чтобы ее можно было переиспользовать во всех компонентах? 
+  validationRequiredField(input: HTMLInputElement) {
+    const { value, name } = input;
+    const requiredFieldMessage = 'Это поле обязательное для заполнения';
+    const errorText = !value ? requiredFieldMessage : validateValue(name, value);
+    this.refs[name].setProps({ error: errorText, value }); // Чтобы мы могли каждый раз обращаться с ref страницы?
+    return errorText;
+  }
 
   render() {
-    //const button = new Button({ text: 'Login page' })
-    //return this.compile(template, {  });
-    // language hbs
-    // return `
-    // <div class="login-form__container">
-    //   {{{Button text="1111" onClick=onClick}}}
-    // </div>
-    // `
     return `
-    <main>
-      <div class="${styles["login-form__container"]}">
+      <form class="${styles["login-form__container"]}">
         <div class="${styles["login-form__title"]}">Вход</div>
         <div class="${styles["login-form__fields"]}">
-          {{{Input type="text" label="Логин" name="login"}}}
-          {{{Input type="password" label="Пароль" name="password"}}}
+          {{{Fields 
+              type="text" 
+              label="Логин" 
+              name="login"
+              ref="login"
+          }}}
+          {{{Fields 
+              type="password" 
+              label="Пароль" 
+              name="password"
+              ref="password"
+          }}}
         </div>
-        <div class="${styles["login-form__actions"]}">
-          {{{Button text="Войти" id="button__primary" link="./chats"}}}
+        <div class="${styles["login-form__actions"]}" >
+          {{{Button type="submit" text="Войти" id="button__primary" onClick=onClickButton}}}
           {{{Button text="Еще не зарегистрированы?" id="button__secondary" link="./registration"}}}
           <a href="./404">404</a>
           <a href="./500">500</a>
         </div>
-      </div>
-    </main>
+      </form>
     `
   }
 }
+
+
+

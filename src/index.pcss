@@ -1,13 +1,12 @@
-/* @import './../src/partials/button/button.css'; */
-/* @import './../src/partials/input/input.css';
-@import './../src/partials/avatar/avatar.css'; */
 @import './variables.css';
-/* @import './components/Button/button.pcss'; */
 
 * {
   font-family: 'Tenor Sans', sans-serif;
 }
 
+.error{
+  color: var(--error-red)
+}
 body {
   display: flex;
   align-items: center;
@@ -71,17 +70,21 @@ body {
   align-items: center;
   margin-top: 10vh;
 }
+
 .chat {
   display: flex;
-  width: 90%;
+  width: 100%;
   height: 90vh;
   flex-direction: row;
   border: solid 1px var(--main-blue);
   border-radius: 12px;
+  position:relative; 
 }
 .chat {
+  
   &__window {
     height: 100%;
+    width:100vh
   }
 
   &__list {
@@ -91,11 +94,78 @@ body {
     border-radius: 12px;
   }
   &__user {
-    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 15px;
+  }
+
+  &__message {
+    width:80%;
+    height:90%;
+    border: solid 1px var(--main-blue);
+    border-radius: 12px;
+  }
+
+  &__message_field {
+    width:100vh;
+    height:10vh;
+    position:absolute; 
+	  bottom:5px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__chats{
+    overflow:auto;
+    display:flex;
+    flex-direction:column;
+    height:75vh;
+    justify-content: flex-end;
+  }
+
+  &__chats_message_user {
+    background: var(--avatar-background);
+    width:80%;
+    border-radius: 12px;
+    padding: 0.5rem .875rem;
+    word-wrap: break-word;
+    max-width: 75%;
+    font-size:12px;
+    margin: 5 10 5 auto;
+  }
+
+  &__chats_message_friends {
+    background-color: var(--form-background);
+    width:80%;
+    border-radius: 12px;
+    float: right;
+    padding: 0.5rem .875rem;
+    word-wrap: break-word;
+    max-width: 75%;
+    font-size:12px;
+    margin:5px 10px;
+  }
+
+  &__friends{
+    margin-top:15px;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+
+  &__friends_chats{
+    border: 1px solid var(--main-blue);
+    width:95%;
+    border-radius: 10px;
+    float: right;
+    padding: 0.5rem .875rem;
+    word-wrap: break-word;
+    max-width: 75%;
+    font-size:12px;
+    margin:3px;
   }
 }

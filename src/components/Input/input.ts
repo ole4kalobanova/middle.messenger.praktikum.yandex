@@ -1,35 +1,40 @@
-import { Block } from '../../utils/Block';
+import Block from '../../utils/Block';
 import styles from './input.pcss';
 
 interface InputProps {
   type: string,
   name: string,
   label: string,
-  events?: {
-    click: () => void
-  }
+  value: string,
+  onFocus: () => void,
+  onBlur: () => void,
+  onInput: () => void
 }
 
 export class Input extends Block {
-
-  constructor({ type, name, label }: InputProps) {
+  constructor({ onFocus, onBlur, onInput, type, name, label, value }: InputProps) {
     super({
       type,
       name,
       label,
-      styles,
+      value,
       events: {
-        click: () => console.log('111111')
+        input: onInput,
+        focus: onFocus,
+        blur: onBlur
       }
     });
   }
 
   render() {
     return `
-    <div>
-      <div class="${styles.input__label}">{{label}}</div>
-      <input type={{type}} class="${styles.input__field}" name={{name}}>
-    </div>
+      <input
+        autocomplete="off" 
+        type={{type}} 
+        class="${styles.input__field}" 
+        name={{name}} 
+        value={{value}}
+       >
     `
   }
 }
