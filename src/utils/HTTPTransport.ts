@@ -2,8 +2,8 @@ enum METHOD {
   GET = 'GET',
   POST = 'POST',
   PUT = 'PUT',
-  DELETE = 'DELETE'
-};
+  DELETE = 'DELETE',
+}
 
 type Options = {
   method: METHOD;
@@ -16,33 +16,32 @@ type OptionsWithoutMethod = Omit<Options, 'method'>;
 // Этот тип эквивалентен следующему:
 // type OptionsWithoutMethod = { data?: any };
 
-
 function queryStringify(data: { [x: string]: any; }) {
-  if (typeof data !== "object") {
-    throw new Error("Data must be object");
+  if (typeof data !== 'object') {
+    throw new Error('Data must be object');
   }
 
   const keys = Object.keys(data);
-  return keys.reduce((result, key, index,) => `${result}${key}=${data[key]}${index < keys.length - 1 ? "&" : ""}`, "?");
+  return keys.reduce((result, key, index) => `${result}${key}=${data[key]}${index < keys.length - 1 ? '&' : ''}`, '?');
 }
 
+// eslint-disable-next-line
 class HTTPTransport {
   public get(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
     return this.request(url, { ...options, method: METHOD.GET });
-  };
+  }
 
   public post(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
     return this.request(url, { ...options, method: METHOD.POST });
-  };
+  }
 
   public put(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
     return this.request(url, { ...options, method: METHOD.PUT });
-  };
+  }
 
   public delete(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
     return this.request(url, { ...options, method: METHOD.DELETE });
-  };
-
+  }
 
   request(url: string, options: Options = { method: METHOD.GET }): Promise<XMLHttpRequest> {
     const { method, data } = options;
@@ -50,10 +49,12 @@ class HTTPTransport {
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
       if (method === METHOD.GET) {
-        url = url + queryStringify(data);
+        // eslint-disable-next-line
+        url += queryStringify(data);
       }
       xhr.open(method, url);
 
+      // eslint-disable-next-line
       xhr.onload = function () {
         resolve(xhr);
       };
@@ -68,5 +69,5 @@ class HTTPTransport {
         xhr.send(data);
       }
     });
-  };
-} 
+  }
+}

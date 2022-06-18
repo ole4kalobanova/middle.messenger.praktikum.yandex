@@ -15,7 +15,7 @@ const validationRegex: Record<string, RegExp> = {
   first_name: nameRegex,
   second_name: nameRegex,
   email: /^[a-zA-Z0-9\-]+\@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)$/, // "спецсимволы вроде дефиса"?
-  phone: /^[\+]{0,1}[\d]{10,15}$/
+  phone: /^[\+]{0,1}[\d]{10,15}$/,
 };
 
 /**
@@ -29,16 +29,17 @@ const validationMessage: Record<string, string> = {
   first_name: nameMessage,
   second_name: nameMessage,
   email: 'Разрешена латиница, цифры и спецсимволы: дефис. Формат ввода: test@test.com',
-  phone: 'Телефон должен содержать от 10 до 15 символов. Разрешены  цифры, может начинается с плюса'
+  phone: 'Телефон должен содержать от 10 до 15 символов. Разрешены  цифры, может начинается с плюса',
 };
 
 /**
  * Функция валидации
  * */
-export function validateValue(rule: string, value: string) {
+export default function validateValue(rule: string, value: string) {
   const regex = validationRegex[rule];
   if (value.length && !regex.test(value)) {
     return validationMessage[rule];
   }
   return '';
 }
+

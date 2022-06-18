@@ -12,7 +12,9 @@ interface InputProps {
 }
 
 export class Input extends Block {
-  constructor({ onFocus, onBlur, onInput, type, name, label, value }: InputProps) {
+  constructor({
+    onFocus, onBlur, onInput, type, name, label, value,
+  }: InputProps) {
     super({
       type,
       name,
@@ -21,8 +23,8 @@ export class Input extends Block {
       events: {
         input: onInput,
         focus: onFocus,
-        blur: onBlur
-      }
+        blur: onBlur,
+      },
     });
   }
 
@@ -35,6 +37,6 @@ export class Input extends Block {
         name={{name}} 
         value={{value}}
        >
-    `
+    `;
   }
 }

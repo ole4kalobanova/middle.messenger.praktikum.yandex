@@ -4,13 +4,13 @@ import styles from './avatar.pcss';
 export class Avatar extends Block {
   constructor() {
     super({
-      styles
+      styles,
     });
   }
 
   render() {
     return ` 
     <div class="${styles.round}" name="avatar">Аватар</div>
-    `
+    `;
   }
 }

@@ -1,6 +1,8 @@
 module.exports = {
   plugins: [
+    // eslint-disable-next-line
     require('autoprefixer'),
-    require('postcss-nested')
-  ]
-}
+    // eslint-disable-next-line
+    require('postcss-nested'),
+  ],
+};

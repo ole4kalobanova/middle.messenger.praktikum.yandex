@@ -1,6 +1,6 @@
 import Block from '../../utils/Block';
 import styles from './fields.pcss';
-import { validateValue } from '../../utils/validation'
+import validateValue from '../../utils/validation';
 
 interface InputProps {
   type: string,
@@ -10,14 +10,16 @@ interface InputProps {
   value: string
 }
 export class Fields extends Block {
-  constructor({ type, name, label, error, value }: InputProps) {
+  constructor({
+    type, name, label, error, value,
+  }: InputProps) {
     super({
       styles,
       type,
       name,
       label,
       error,
-      value
+      value,
     });
 
     this.setProps({
@@ -50,6 +52,6 @@ export class Fields extends Block {
       }}}
       {{{ErrorMes text=error ref="error"}}}
     </div>
-    `
+    `;
   }
 }

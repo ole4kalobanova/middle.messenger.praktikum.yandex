@@ -1,6 +1,6 @@
 import Block from '../../utils/Block';
-import styles from './button.pcss'
-//import template from './button.hbs'
+import styles from './button.pcss';
+// import template from './button.hbs'
 interface ButtonProps {
   text: string,
   id: string,
@@ -10,7 +10,9 @@ interface ButtonProps {
 }
 
 export class Button extends Block {
-  constructor({ id, text, link, type, onClick }: ButtonProps) {
+  constructor({
+    id, text, link, type, onClick,
+  }: ButtonProps) {
     // Создаём враппер дом-элемент button
     super({
       id,
@@ -18,9 +20,9 @@ export class Button extends Block {
       link,
       type: type || 'button',
       events: {
-        click: onClick
+        click: onClick,
       },
-      styles
+      styles,
     });
   }
 
@@ -31,6 +33,6 @@ export class Button extends Block {
         {{text}}
       </button>
     </a>
-    `
+    `;
   }
 }

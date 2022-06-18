@@ -5,7 +5,6 @@ interface ErrorProps {
   text: string
 }
 export class ErrorMes extends Block {
-
   constructor(props: ErrorProps) {
     super({
       ...props,
@@ -20,6 +19,6 @@ export class ErrorMes extends Block {
           {{text}}
         {{/if}}
       </div>
-    `
+    `;
   }
 }

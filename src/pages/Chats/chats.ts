@@ -4,7 +4,7 @@ import styles from '../../index.pcss';
 interface ChatsProps {
   sendMessage?: () => void,
   message?: string
-};
+}
 export class Chats extends Block {
   constructor(props: ChatsProps) {
     super({
@@ -15,18 +15,19 @@ export class Chats extends Block {
     this.setProps({
       sendMessage: (e: Event) => {
         e.preventDefault();
-        var userMessage = document.getElementById("message") as HTMLInputElement;
+        const userMessage = document.getElementById('message') as HTMLInputElement;
         if (userMessage.value) {
-          var newMessageDiv = document.createElement("div");
-          var text = document.createTextNode(userMessage.value);
+          const newMessageDiv = document.createElement('div');
+          const text = document.createTextNode(userMessage.value);
           newMessageDiv.appendChild(text);
-          var element = document.getElementById("chats");
-          newMessageDiv.classList.add(`chat__chats_message_user_${element?.className.split('_')[element?.className.split('_').length - 1]}`);
+          const element = document.getElementById('chats');
+          const idNonoidPage = element?.className?.split('_') || '';
+          newMessageDiv.classList.add(`chat__chats_message_user_${idNonoidPage[idNonoidPage.length - 1]}`);
           element?.appendChild(newMessageDiv);
-          userMessage.value = "";
+          userMessage.value = '';
         }
       },
-    })
+    });
   }
 
   render() {
@@ -61,6 +62,6 @@ export class Chats extends Block {
         </div>
       </div>
     </div>
-    `
+    `;
   }
 }

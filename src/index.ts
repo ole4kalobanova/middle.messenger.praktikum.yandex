@@ -9,7 +9,7 @@ import Chats from './pages/Chats';
 import ChangeUser from './pages/User';
 import RegistrationPage from './pages/Registration';
 import Error500 from './pages/Error500';
-import ChangePassword from './pages/Password'
+import ChangePassword from './pages/Password';
 import ErrorMes from './components/Error';
 import Fields from './components/Fields';
 
@@ -19,33 +19,36 @@ registerComponent(Avatar);
 registerComponent(ErrorMes);
 registerComponent(Fields);
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
   let renderPage = new Error404({});
-  switch (location.pathname) {
+  switch (window.location.pathname) {
     case '/':
-      renderPage = new LoginPage({})
-      break
+      renderPage = new LoginPage({});
+      break;
     case '/chats':
-      renderPage = new Chats({})
-      break
+      renderPage = new Chats({});
+      break;
     case '/profile':
-      renderPage = new ChangeUser({})
-      break
+      renderPage = new ChangeUser({});
+      break;
     case '/login':
-      renderPage = new LoginPage({})
-      break
+      renderPage = new LoginPage({});
+      break;
     case '/registration':
-      renderPage = new RegistrationPage({})
-      break
+      renderPage = new RegistrationPage({});
+      break;
     case '/password':
-      renderPage = new ChangePassword({})
-      break
+      renderPage = new ChangePassword({});
+      break;
     case '/404':
-      renderPage = new Error404({})
-      break
+      renderPage = new Error404({});
+      break;
     case '/500':
-      renderPage = new Error500({})
-      break
+      renderPage = new Error500({});
+      break;
+    default:
+      renderPage = new Error404({});
+      break;
   }
   renderDOM(renderPage);
 });

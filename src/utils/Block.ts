@@ -1,6 +1,6 @@
-import EventBus from './EventBus';
 import { nanoid } from 'nanoid';
 import Handlebars from 'handlebars';
+import EventBus from './EventBus';
 
 interface BlockMeta<P = any> {
   props: P;
@@ -17,15 +17,20 @@ export default class Block<P = any> {
   } as const;
 
   public id = nanoid(6);
+
+  // @ts-expect-error
   private readonly _meta: BlockMeta;
 
   protected _element: Nullable<HTMLElement> = null;
+
   protected readonly props: P;
+
   protected children: { [id: string]: Block } = {};
 
   eventBus: () => EventBus<Events>;
 
   protected state: any = {};
+
   protected refs: { [key: string]: Block } = {};
 
   public constructor(props?: P) {
@@ -35,7 +40,7 @@ export default class Block<P = any> {
       props,
     };
 
-    this.getStateFromProps(props)
+    this.getStateFromProps(props);
 
     this.props = this._makePropsProxy(props || {} as P);
     this.state = this._makePropsProxy(this.state);
@@ -58,6 +63,8 @@ export default class Block<P = any> {
     this._element = this._createDocumentElement('div');
   }
 
+  // @ts-expect-error
+  // eslint-disable-next-line
   protected getStateFromProps(props: any): void {
     this.state = {};
   }
@@ -71,6 +78,8 @@ export default class Block<P = any> {
     this.componentDidMount(props);
   }
 
+  // @ts-expect-error
+  // eslint-disable-next-line
   componentDidMount(props: P) {
   }
 
@@ -82,6 +91,8 @@ export default class Block<P = any> {
     this._render();
   }
 
+  // @ts-expect-error
+  // eslint-disable-next-line
   componentDidUpdate(oldProps: P, newProps: P) {
     return true;
   }
@@ -120,7 +131,7 @@ export default class Block<P = any> {
 
   protected render(): string {
     return '';
-  };
+  }
 
   getContent(): HTMLElement {
     // Хак, чтобы вызвать CDM только после добавления в DOM
@@ -129,7 +140,7 @@ export default class Block<P = any> {
         if (this.element?.parentNode?.nodeType !== Node.DOCUMENT_FRAGMENT_NODE) {
           this.eventBus().emit(Block.EVENTS.FLOW_CDM);
         }
-      }, 100)
+      }, 100);
     }
 
     return this.element!;
@@ -164,7 +175,7 @@ export default class Block<P = any> {
   }
 
   _removeEvents() {
-    const events: Record<string, () => void> = (this.props as any).events;
+    const { events } = this.props as any;
 
     if (!events || !this._element) {
       return;
@@ -177,7 +188,7 @@ export default class Block<P = any> {
   }
 
   _addEvents() {
-    const events: Record<string, () => void> = (this.props as any).events;
+    const { events } = this.props as any;
 
     if (!events) {
       return;
@@ -195,7 +206,9 @@ export default class Block<P = any> {
      * Рендерим шаблон
      */
     const template = Handlebars.compile(this.render());
-    fragment.innerHTML = template({ ...this.state, ...this.props, children: this.children, refs: this.refs });
+    fragment.innerHTML = template({
+      ...this.state, ...this.props, children: this.children, refs: this.refs,
+    });
 
     /**
      * Заменяем заглушки на компоненты
