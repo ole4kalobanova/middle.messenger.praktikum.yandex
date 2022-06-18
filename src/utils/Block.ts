@@ -42,7 +42,7 @@ export default class Block<P = any> {
 
     this.getStateFromProps(props);
 
-    this.props = this._makePropsProxy(props || {} as P);
+    this.props = this._makePropsProxy(props as any);
     this.state = this._makePropsProxy(this.state);
 
     this.eventBus = () => eventBus;
@@ -102,7 +102,7 @@ export default class Block<P = any> {
       return;
     }
 
-    Object.assign(this.props, nextProps);
+    Object.assign(this.props as any, nextProps);
   };
 
   setState = (nextState: any) => {
@@ -174,28 +174,29 @@ export default class Block<P = any> {
     return document.createElement(tagName);
   }
 
-  _removeEvents() {
-    const { events } = this.props as any;
-
-    if (!events || !this._element) {
-      return;
-    }
-
-
-    Object.entries(events).forEach(([event, listener]) => {
-      this._element!.removeEventListener(event, listener);
-    });
-  }
-
-  _addEvents() {
-    const { events } = this.props as any;
+  private _removeEvents() {
+    // eslint-disable-next-line
+    const events: Record<string, () => void> = (this.props as any).events;
 
     if (!events) {
       return;
     }
 
     Object.entries(events).forEach(([event, listener]) => {
-      this._element!.addEventListener(event, listener);
+      this._element?.removeEventListener(event, listener);
+    });
+  }
+
+  private _addEvents() {
+    // eslint-disable-next-line
+    const events: Record<string, () => void> = (this.props as any).events;
+
+    if (!events) {
+      return;
+    }
+
+    Object.entries(events).forEach(([event, listener]) => {
+      this._element?.addEventListener(event, listener);
     });
   }
 
