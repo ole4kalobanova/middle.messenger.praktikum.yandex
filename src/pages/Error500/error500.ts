@@ -1,5 +1,5 @@
 import Block from '../../utils/Block';
-import styles from '../../index.pcss';
+import * as styles from '../../index.pcss';
 
 interface Error500Props {}
 export class Error500 extends Block {

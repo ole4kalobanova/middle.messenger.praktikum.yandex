@@ -1,5 +1,5 @@
 import Block from '../../utils/Block';
-import styles from './fields.pcss';
+import * as styles from './fields.pcss';
 import validateValue from '../../utils/validation';
 
 interface InputProps {
@@ -35,6 +35,8 @@ export class Fields extends Block {
     const errorText = validateValue(name, value);
     this.refs.error.setProps({ text: errorText });
   }
+
+  static nameComponent = 'Fields';
 
   render() {
     return `

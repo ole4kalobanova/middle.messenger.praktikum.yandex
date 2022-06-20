@@ -1,6 +1,6 @@
 import validateValue from 'utils/validation';
 import Block from '../../utils/Block';
-import styles from '../../index.pcss';
+import * as styles from '../../index.pcss';
 
 interface ChangePasswordProps { }
 export class ChangePassword extends Block {

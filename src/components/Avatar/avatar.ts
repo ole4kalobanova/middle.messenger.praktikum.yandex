@@ -1,5 +1,5 @@
 import Block from '../../utils/Block';
-import styles from './avatar.pcss';
+import * as styles from './avatar.pcss';
 
 export class Avatar extends Block {
   constructor() {
@@ -7,6 +7,8 @@ export class Avatar extends Block {
       styles,
     });
   }
+
+  static nameComponent = 'Avatar';
 
   render() {
     return ` 

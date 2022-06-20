@@ -2,12 +2,13 @@ import Handlebars, { HelperOptions } from 'handlebars';
 import Block from './Block';
 
 interface BlockConstructable<Props = any> {
+  nameComponent: string;
   new(props: Props): Block;
 }
 
 export default function registerComponent<Props extends any>(Component: BlockConstructable<Props>) {
   Handlebars.registerHelper(
-    Component.name,
+    Component.nameComponent,
     // eslint-disable-next-line
     function (this: Props, { hash: { ref, ...hash }, data, fn }: HelperOptions) {
       if (!data.root.children) {

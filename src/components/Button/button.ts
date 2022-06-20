@@ -1,7 +1,8 @@
 import Block from '../../utils/Block';
-import styles from './button.pcss';
+import * as styles from './button.pcss';
 // import template from './button.hbs'
 interface ButtonProps {
+  //name: 'Button',
   text: string,
   id: string,
   link: string
@@ -24,7 +25,10 @@ export class Button extends Block {
       },
       styles,
     });
+    
   }
+  
+  static nameComponent = 'Button';
 
   render() {
     return ` 

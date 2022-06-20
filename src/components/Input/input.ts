@@ -1,5 +1,5 @@
 import Block from '../../utils/Block';
-import styles from './input.pcss';
+import * as styles from './input.pcss';
 
 interface InputProps {
   type: string,
@@ -27,6 +27,8 @@ export class Input extends Block {
       },
     });
   }
+
+  static nameComponent = 'Input';
 
   render() {
     return `

@@ -1,6 +1,6 @@
 import Block from 'utils/Block';
 import validateValue from 'utils/validation';
-import styles from '../../index.pcss';
+import * as styles from '../../index.pcss';
 
 interface LoginPageProps { }
 export class LoginPage extends Block {

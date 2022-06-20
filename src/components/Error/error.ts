@@ -1,5 +1,5 @@
 import Block from '../../utils/Block';
-import styles from './error.pcss';
+import * as styles from './error.pcss';
 
 interface ErrorProps {
   text: string
@@ -11,6 +11,8 @@ export class ErrorMes extends Block {
       styles,
     });
   }
+
+  static nameComponent = 'ErrorMes';
 
   render() {
     return `
