@@ -21,8 +21,6 @@ registerComponent(Fields);
 
 document.addEventListener('DOMContentLoaded', () => {
   let renderPage = new Error404({});
-  console.log(window.location, 'window.location')
-  console.log(window.location.pathname, 'window.location.pathname')
   switch (window.location.pathname) {
     case '/':
       renderPage = new LoginPage({});
